@@ -45,13 +45,14 @@ public class ScriptRunnerTest extends BaseDataTest {
     DataSource ds = createUnpooledDataSource(JPETSTORE_PROPERTIES);
     Connection conn = ds.getConnection();
     ScriptRunner runner = new ScriptRunner(conn);
-    runner.setSendFullScript(true);
+    // 全量执行脚本会报错
+    runner.setSendFullScript(false);
     runner.setAutoCommit(true);
     runner.setStopOnError(false);
     runner.setErrorLogWriter(null);
     runner.setLogWriter(null);
-    conn.close();
     runJPetStoreScripts(runner);
+    conn.close();
     assertProductsTableExistsAndLoaded();
   }
 

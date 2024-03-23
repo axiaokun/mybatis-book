@@ -45,7 +45,7 @@ public class ScriptRunnerTest extends BaseDataTest {
     DataSource ds = createUnpooledDataSource(JPETSTORE_PROPERTIES);
     Connection conn = ds.getConnection();
     ScriptRunner runner = new ScriptRunner(conn);
-    // 全量执行脚本会报错
+    // 全量执行脚本会报错 test push
     runner.setSendFullScript(false);
     runner.setAutoCommit(true);
     runner.setStopOnError(false);
